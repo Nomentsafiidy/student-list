@@ -1,6 +1,54 @@
 <div>
-    <div *ngFor="let student of students">
-        {{ student }}
-        <button mat-stroked-button>Basic</button>
+    <div class="s_header">
+        <div class="s_input">
+            <i class="material-icons">
+                search
+            </i>
+            <input type="text" placeholder="Search.." />
+        </div>
+    </div>
+    <div class="s_container">
+        <button class="down_btn" mat-button>
+            <i class="material-icons">
+                cloud_download
+            </i>
+        </button>
+        <div class="student_table_header">
+            <div>
+                title
+            </div>
+            <div>
+                last_name
+            </div>
+            <div>
+                first_name
+            </div>
+            <div>
+                email
+            </div>
+            <div>
+                promotion
+            </div>
+        </div>
+        <cdk-virtual-scroll-viewport itemSize="50" class="students-viewport">
+            <div *cdkVirtualFor="let student of students" class="student_items">
+                <div>
+                    {{student.title }}
+                </div>
+                <div>
+                    {{student.last_name}}
+                </div>
+                <div>
+                    {{student.first_name}}
+                </div>
+                <div>
+                    {{student.email}}
+                </div>
+                <div>
+                    {{student.promotion}}
+                </div>
+            </div>
+            <button mat-stroked-button>Basic</button>
+        </cdk-virtual-scroll-viewport>
     </div>
 </div>
