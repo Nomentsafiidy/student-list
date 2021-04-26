@@ -1,36 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Student } from 'src/app/models/student';
+import { StudentService } from 'src/app/services/student.service';
 @Component({
     selector: 'app-student',
     templateUrl: './student.page.html',
     styleUrls: ['./student.page.scss'],
 })
 export class StudentPage implements OnInit {
-    private _jsonURL = 'assets/static_data/students.json';
     public students: Student[];
-    constructor(private http: HttpClient) {
+    constructor(private studentService: StudentService) {
         this.students = [];
     }
 
     ngOnInit(): void {
-        this.getStudents().then((studentsList: Student[]) => {
+        this.studentService.getStudents().then((studentsList: Student[]) => {
             this.students = studentsList;
-        });
-    }
-
-    public getStudents(): Promise<Student[]> {
-        return new Promise((resolve) => {
-            this.http.get(this._jsonURL).subscribe(
-                (data) => {
-                    if (data) {
-                        resolve(data as Student[]);
-                    }
-                },
-                (error) => {
-                    console.log(error);
-                }
-            );
         });
     }
 }
