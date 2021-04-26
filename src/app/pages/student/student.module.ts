@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentPage } from './student.page';
+//material import
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
     {
@@ -11,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(routes)],
+    imports: [CommonModule, MatButtonModule, RouterModule.forChild(routes)],
     exports: [RouterModule],
     declarations: [StudentPage],
 })
