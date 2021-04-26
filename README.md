@@ -2,6 +2,10 @@
 
 Display a list of students from a JSON file
 
+# surplus
+
+search for students by email
+
 # Student
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
