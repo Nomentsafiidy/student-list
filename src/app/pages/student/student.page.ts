@@ -11,13 +11,16 @@ import { ExcelService } from 'src/app/services/excel.service';
 })
 export class StudentPage implements OnInit {
     public students: Student[];
+    public studentsFiltered: Student[];
     constructor(private studentService: StudentService, public dialog: MatDialog, private excelService: ExcelService) {
         this.students = [];
+        this.studentsFiltered = this.students;
     }
 
     ngOnInit(): void {
         this.studentService.getStudents().then((studentsList: Student[]) => {
             this.students = studentsList;
+            this.studentsFiltered = this.students;
         });
     }
 
@@ -60,6 +63,14 @@ export class StudentPage implements OnInit {
     }
 
     exportExcel() {
-        this.excelService.exportExcel(this.students);
+        this.excelService.exportExcel(this.studentsFiltered);
+    }
+
+    search(event: any) {
+        if (event.target.value) {
+            this.studentsFiltered = this.students.filter((student) => (student.email.indexOf(event.target.value.trim().toLowerCase()) !== -1 ? student : null));
+        } else {
+            this.studentsFiltered = this.students;
+        }
     }
 }
