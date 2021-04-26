@@ -31,7 +31,7 @@
             </div>
         </div>
         <cdk-virtual-scroll-viewport itemSize="50" class="students-viewport">
-            <div *cdkVirtualFor="let student of students" class="student_items">
+            <div (click)="showStudentDetails(student.email)" *cdkVirtualFor="let student of students" class="student_items">
                 <div>
                     {{student.title }}
                 </div>

@@ -5,6 +5,7 @@ import { StudentPage } from './student.page';
 //material import
 import { MatButtonModule } from '@angular/material/button';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatDialogModule } from '@angular/material/dialog';
 const routes: Routes = [
     {
         path: '',
@@ -13,7 +14,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [CommonModule, MatButtonModule, ScrollingModule, RouterModule.forChild(routes)],
+    imports: [CommonModule, MatDialogModule, MatButtonModule, ScrollingModule, RouterModule.forChild(routes)],
     exports: [RouterModule],
     declarations: [StudentPage],
 })
