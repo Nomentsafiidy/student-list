@@ -60,6 +60,6 @@ export class StudentPage implements OnInit {
     }
 
     exportExcel() {
-        this.excelService.exportExcel();
+        this.excelService.exportExcel(this.students);
     }
 }
