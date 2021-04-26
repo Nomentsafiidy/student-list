@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Student } from 'src/app/models/student';
 @Component({
-  selector: 'app-student-details',
-  templateUrl: './student-details.component.html',
-  styleUrls: ['./student-details.component.scss']
+    selector: 'app-student-details',
+    templateUrl: './student-details.component.html',
+    styleUrls: ['./student-details.component.scss'],
 })
 export class StudentDetailsComponent implements OnInit {
+    ngOnInit(): void {}
 
-  constructor() { }
+    constructor(public dialogRef: MatDialogRef<StudentDetailsComponent>, @Inject(MAT_DIALOG_DATA) public data: Student) {}
 
-  ngOnInit(): void {
-  }
-
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 }
